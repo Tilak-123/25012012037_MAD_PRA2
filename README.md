@@ -1,72 +1,64 @@
-# Mobile Application Development — Practical 2
+# MAD Practical 2: Basic Android UI & ConstraintLayout Exploration
 
-A native Android application built with Kotlin in Android Studio, demonstrating fundamental Android application architecture, layout structures, and build configuration using the Gradle Kotlin DSL (`.kts`).
-
----
-
-## Table of Contents
-- [Aim & Objectives](#aim--objectives)
-- [Tech Stack & Environment](#tech-stack--environment)
-- [Project Architecture & Tree](#project-architecture--tree)
-- [Key Components](#key-components)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
-- [Build & Run](#build--run)
-- [Student & Developer Information](#student--developer-information)
+**Course:** Mobile Application Development (MAD)  
+**Enrollment No:** 25012012037 
+**Package Name:** `package com.example.a25012012037_mad_pra2`
 
 ---
 
-## Aim & Objectives
-* Understand the core directory and file structure of an Android Studio project.
-* Configure application dependencies and build scripts using Gradle Kotlin DSL (`build.gradle.kts`) and Version Catalogs (`libs.versions.toml`).
-* Implement an entry-point activity lifecycle using `MainActivity.kt`.
-* Construct UI components using XML layouts (`activity_main.xml`) with integrated day/night theme configurations.
+## 📱 Project Overview
+
+This project is part of the **Mobile Application Development (MAD)** lab curriculum. It demonstrates the fundamentals of building an Android application from scratch, configuring the **Android Manifest**, designing a responsive user interface using **ConstraintLayout**, customizing view attributes (colors, text size, positioning), and setting up unit and instrumented tests.
 
 ---
 
-## Tech Stack & Environment
+## 🎯 Objectives & Features
 
-| Property | Details |
-| :--- | :--- |
-| **IDE** | Android Studio |
-| **Language** | Kotlin |
-| **Build Configuration** | Gradle Kotlin DSL (`build.gradle.kts`) |
-| **Dependency Catalog** | `gradle/libs.versions.toml`[cite: 7] |
-| **Package Name** | `com.example.a25012012037_mad_pra2`[cite: 7] |
-| **Target Platform** | Android (Phone & Tablet) |
+- **UI Design with ConstraintLayout:** Create a responsive layout where UI elements adapt gracefully to various screen dimensions.
+- **View Customization:** Configure `TextView` attributes including custom text, text size (`20sp`), text color (`holo_blue_dark`), and background coloring (`holo_orange_light`).
+- **Activity & Manifest Configuration:** Define `MainActivity` as the default launcher activity with customized window input and application themes.
+- **Testing Integration:** Provide test suites for both local unit testing (JUnit) and device-level instrumented testing (AndroidX Test Runner).
 
 ---
 
-## Project Architecture & Tree
+## 📂 Project Structure & Key Files
 
-```text
-25012012037_MAD_PRA2/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/example/a25012012037_mad_pra2/
-│   │   │   │   └── MainActivity.kt             # Application entry point and Activity lifecycle logic
-│   │   │   ├── res/
-│   │   │   │   ├── layout/
-│   │   │   │   │   └── activity_main.xml       # User interface layout definition
-│   │   │   │   ├── values/
-│   │   │   │   │   ├── colors.xml              # Base color palette declarations
-│   │   │   │   │   ├── strings.xml             # UI string resources
-│   │   │   │   │   └── themes.xml              # Light theme styles
-│   │   │   │   ├── values-night/
-│   │   │   │   │   └── themes.xml              # Dark mode theme overrides
-│   │   │   │   ├── drawable/                   # Vector graphics and launcher backgrounds
-│   │   │   │   ├── mipmap-*/                   # Multi-density app launcher icons (hdpi, mdpi, xhdpi, etc.)
-│   │   │   │   └── xml/                        # Data extraction and backup rules
-│   │   │   └── AndroidManifest.xml             # App permissions, intent-filters, and package metadata
-│   │   ├── androidTest/                        # Instrumented Android UI and integration tests
-│   │   └── test/                               # Local unit tests
-│   ├── build.gradle.kts                        # App module-level dependencies and SDK settings
-│   └── .gitignore
-├── gradle/
-│   ├── wrapper/                                # Gradle wrapper binaries and properties
-│   └── libs.versions.toml                      # Centralized dependencies and plugin version catalog
-├── build.gradle.kts                            # Top-level project build script
-├── settings.gradle.kts                         # Repository definitions and project settings
-├── gradlew / gradlew.bat                       # Gradle wrapper execution scripts (Unix / Windows)
-└── README.md
+| File | Purpose | Description |
+| :--- | :--- | :--- |
+| **`activity_main.xml`** | UI Layout | Defines the visual structure using `ConstraintLayout` with a light orange background and a centrally positioned `TextView` with custom styling. |
+| **`AndroidManifest.xml`** | App Manifest | Registers `MainActivity` with the `MAIN` action and `LAUNCHER` category, declares application theme, and backup rules. |
+| **`ExampleUnitTest.kt`** | Local Unit Test | Host-based unit test executed on the JVM to test standalone logic (e.g., math assertion `2 + 2 = 4`). |
+| **`ExampleInstrumentedTest.kt`** | Instrumented Test | Device-based test validating Android application context and package name integrity (`com.example.a25012012037_mad_pra2`). |
+
+---
+
+## 🎨 UI Component Details (`activity_main.xml`)
+
+| Property | Value | Description |
+| :--- | :--- | :--- |
+| **Root Layout** | `ConstraintLayout` | Container with ID `@+id/main` and light orange background (`@android:color/holo_orange_light`). |
+| **View Component** | `TextView` | Centered text element displaying `"Hello Wrodl"`. |
+| **Text Size** | `20sp` | Scaled-pixel size for accessible and readable typography. |
+| **Text Color** | `@android:color/holo_blue_dark` | Dark blue shade for strong visual contrast against the orange canvas. |
+| **Constraints** | Top, Bottom, Start, End to parent | Centers the TextView vertically and horizontally (`bias: 0.5`). |
+
+---
+
+## 🚀 How to Run the App
+
+1. **Clone or Open Project:**
+   - Open **Android Studio**.
+   - Select **Open** and choose the `MAD_25012012037_prac2` project directory.
+2. **Gradle Sync:**
+   - Wait for Gradle to download dependencies and build the project index.
+3. **Run on Device/Emulator:**
+   - Select an Android Virtual Device (AVD) or connect a physical Android device with USB debugging enabled.
+   - Click the green **Run** button (`Shift + F10`).
+
+---
+
+## 🧪 Running Tests
+
+- **Local Unit Tests:**
+  ```bash
+  ./gradlew test
